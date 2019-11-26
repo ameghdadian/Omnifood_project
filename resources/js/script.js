@@ -62,11 +62,12 @@ function animationNavigation4() {
 }
 window.addEventListener('scroll', animationNavigation4);
 
+//  ****************
 //  Mobile Navigation
+//  ****************
 const navIcon = document.querySelector('.ion-navicon-round');
 const mainNav = document.querySelector('.main-nav');
 const toggleNav = () => {
-	console.log(mainNav.style.display)
 	if(mainNav.style.display === '')
 	{
 		 mainNav.style.display = "block";
@@ -81,9 +82,24 @@ const toggleNav = () => {
 	// if display is "none"
 	else {
 		mainNav.style.display = 'block';
-		navIcon.classList.remove('ion-navicon-round');
 		navIcon.classList.add('ion-close');
+		navIcon.classList.remove('ion-navicon-round');
 	}
-	console.log(mainNav.style.display);
+	console.log(mainNav.style.display)
 }
- navIcon.addEventListener('click', toggleNav);
+navIcon.addEventListener('click', toggleNav);
+
+
+// To remove some weird effects caused.
+window.addEventListener('resize', () => {
+	if(window.innerWidth > '767')
+		mainNav.style.display = 'block';
+	if(window.innerWidth <= '767'){
+		mainNav.style.display = 'none';
+		navIcon.classList.add('ion-navicon-round');
+		navIcon.classList.remove('ion-close');
+	}
+})
+if(window.innerWidth > '767px'){
+	mainNav.style.display = 'none';
+}
